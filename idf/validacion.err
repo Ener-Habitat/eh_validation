@@ -1,0 +1,42 @@
+Program Version,EnergyPlus, Version 25.1.0-68a4a7c774, YMD=2025.10.22 13:13,
+   ** Warning ** RunPeriod: object=RUN PERIOD 1, start weekday (MONDAY) does not match the start year (2025), corrected to THURSDAY.
+   ** Warning ** BuildingSurface:Detailed="NORTE", Sun Exposure="SUNEXPOSED".
+   **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.
+   ** Warning ** BuildingSurface:Detailed="OESTE", Sun Exposure="SUNEXPOSED".
+   **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.
+   ** Warning ** BuildingSurface:Detailed="SUR", Sun Exposure="SUNEXPOSED".
+   **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.
+   ** Warning ** BuildingSurface:Detailed="TECHO", Sun Exposure="SUNEXPOSED".
+   **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=ESTE
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=ESTE
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=NORTE
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=OESTE
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=PISO
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=SUR
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** GetUserConvectionCoefficients: SurfaceProperty:ConvectionCoefficients, for Surface Name=TECHO
+   **   ~~~   ** Convection Coefficient 2 Location is blank and rest of fields will not be processed.
+   ** Warning ** Zone areas*inside surface emissivities are summing to zero, for Zone="CUBO"
+   **   ~~~   ** As a result, MRT will be set to MAT for that zone
+   ** Warning ** Enclosure areas*inside surface emissivities are summing to zero, for Enclosure="S_CUBO"
+   **   ~~~   ** As a result, MRT will be set to the volume weighted average MAT for that enclosure
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ************* Simulation Error Summary *************
+   ************* There are 3 unused schedules in input.
+   ************* Use Output:Diagnostics,DisplayUnusedSchedules; to see them.
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 14 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  0.55sec

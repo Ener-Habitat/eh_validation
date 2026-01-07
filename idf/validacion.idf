@@ -1,0 +1,494 @@
+!-Generator IDFEditor 1.55
+!-Option SortedOrder
+
+!-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+!-      Use '!' comments if they need to be retained when using the IDFEditor.
+
+
+!-   ===========  ALL OBJECTS IN CLASS: VERSION ===========
+
+Version,
+    25.1;                    !- Version Identifier
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SIMULATIONCONTROL ===========
+
+SimulationControl,
+    No,                      !- Do Zone Sizing Calculation
+    No,                      !- Do System Sizing Calculation
+    No,                      !- Do Plant Sizing Calculation
+    No,                      !- Run Simulation for Sizing Periods
+    Yes,                     !- Run Simulation for Weather File Run Periods
+    ,                        !- Do HVAC Sizing Simulation for Sizing Periods
+    ;                        !- Maximum Number of HVAC Sizing Simulation Passes
+
+
+!-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
+
+Building,
+    Building 1,              !- Name
+    -0,                      !- North Axis {deg}
+    ,                        !- Terrain
+    ,                        !- Loads Convergence Tolerance Value {W}
+    ,                        !- Temperature Convergence Tolerance Value {deltaC}
+    ,                        !- Solar Distribution
+    ,                        !- Maximum Number of Warmup Days
+    ;                        !- Minimum Number of Warmup Days
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SHADOWCALCULATION ===========
+
+ShadowCalculation,
+    PolygonClipping,         !- Shading Calculation Method
+    Periodic,                !- Shading Calculation Update Frequency Method
+    20,                      !- Shading Calculation Update Frequency
+    15000,                   !- Maximum Figures in Shadow Overlap Calculations
+    SutherlandHodgman,       !- Polygon Clipping Algorithm
+    512,                     !- Pixel Counting Resolution
+    SimpleSkyDiffuseModeling,!- Sky Diffuse Modeling Algorithm
+    No,                      !- Output External Shading Calculation Results
+    No,                      !- Disable Self-Shading Within Shading Zone Groups
+    No;                      !- Disable Self-Shading From Shading Zone Groups to Other Zones
+
+
+!-   ===========  ALL OBJECTS IN CLASS: HEATBALANCEALGORITHM ===========
+
+HeatBalanceAlgorithm,
+    ConductionTransferFunction,  !- Algorithm
+    200;                     !- Surface Temperature Upper Limit {C}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: TIMESTEP ===========
+
+Timestep,
+    60;                      !- Number of Timesteps per Hour
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:LOCATION ===========
+
+Site:Location,
+    Temixco,                 !- Name
+    18.85,                   !- Latitude {deg}
+    -99.14,                  !- Longitude {deg}
+    -6,                      !- Time Zone {hr}
+    1280,                    !- Elevation {m}
+    No;                      !- Keep Site Location Information
+
+
+!-   ===========  ALL OBJECTS IN CLASS: RUNPERIOD ===========
+
+RunPeriod,
+    Run Period 1,            !- Name
+    5,                       !- Begin Month
+    15,                      !- Begin Day of Month
+    2025,                    !- Begin Year
+    5,                       !- End Month
+    15,                      !- End Day of Month
+    2025,                    !- End Year
+    Monday,                  !- Day of Week for Start Day
+    No,                      !- Use Weather File Holidays and Special Days
+    No,                      !- Use Weather File Daylight Saving Period
+    No,                      !- Apply Weekend Holiday Rule
+    Yes,                     !- Use Weather File Rain Indicators
+    Yes;                     !- Use Weather File Snow Indicators
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULETYPELIMITS ===========
+
+ScheduleTypeLimits,
+    Fractional,              !- Name
+    0,                       !- Lower Limit Value
+    1,                       !- Upper Limit Value
+    Continuous;              !- Numeric Type
+
+ScheduleTypeLimits,
+    OnOff,                   !- Name
+    0,                       !- Lower Limit Value
+    1,                       !- Upper Limit Value
+    Discrete,                !- Numeric Type
+    availability;            !- Unit Type
+
+ScheduleTypeLimits,
+    OnOff 1,                 !- Name
+    0,                       !- Lower Limit Value
+    1,                       !- Upper Limit Value
+    Discrete,                !- Numeric Type
+    availability;            !- Unit Type
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:CONSTANT ===========
+
+Schedule:Constant,
+    Always On Discrete,      !- Name
+    OnOff,                   !- Schedule Type Limits Name
+    1;                       !- Hourly Value
+
+Schedule:Constant,
+    Always Off Discrete,     !- Name
+    OnOff 1,                 !- Schedule Type Limits Name
+    0;                       !- Hourly Value
+
+Schedule:Constant,
+    Always On Continuous,    !- Name
+    Fractional,              !- Schedule Type Limits Name
+    1;                       !- Hourly Value
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    10cmCADa0.3,             !- Name
+    MediumSmooth,            !- Roughness
+    0.1,                     !- Thickness {m}
+    1.74,                    !- Conductivity {W/m-K}
+    2300,                    !- Density {kg/m3}
+    1000,                    !- Specific Heat {J/kg-K}
+    0.0001,                  !- Thermal Absorptance
+    0.3,                     !- Solar Absorptance
+    0.3;                     !- Visible Absorptance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:NOMASS ===========
+
+Material:NoMass,
+    No_mass,                 !- Name
+    MediumSmooth,            !- Roughness
+    0.001,                   !- Thermal Resistance {m2-K/W}
+    0.0001,                  !- Thermal Absorptance
+    0.7,                     !- Solar Absorptance
+    0.7;                     !- Visible Absorptance
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    10cmCADa0.3,             !- Name
+    10cmCADa0.3;             !- Outside Layer
+
+Construction,
+    No_mass,                 !- Name
+    No_mass;                 !- Outside Layer
+
+
+!-   ===========  ALL OBJECTS IN CLASS: GLOBALGEOMETRYRULES ===========
+
+GlobalGeometryRules,
+    UpperLeftCorner,         !- Starting Vertex Position
+    Counterclockwise,        !- Vertex Entry Direction
+    Relative,                !- Coordinate System
+    Relative,                !- Daylighting Reference Point Coordinate System
+    Relative;                !- Rectangular Surface Coordinate System
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SPACE ===========
+
+Space,
+    S_Cubo,                  !- Name
+    Cubo,                    !- Zone Name
+    ,                        !- Ceiling Height {m}
+    ,                        !- Volume {m3}
+    ,                        !- Floor Area {m2}
+    ;                        !- Space Type
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONE ===========
+
+Zone,
+    Cubo,                    !- Name
+    ,                        !- Direction of Relative North {deg}
+    0,                       !- X Origin {m}
+    0,                       !- Y Origin {m}
+    0,                       !- Z Origin {m}
+    ,                        !- Type
+    1,                       !- Multiplier
+    ,                        !- Ceiling Height {m}
+    ,                        !- Volume {m3}
+    ,                        !- Floor Area {m2}
+    ,                        !- Zone Inside Convection Algorithm
+    ,                        !- Zone Outside Convection Algorithm
+    Yes;                     !- Part of Total Floor Area
+
+
+!-   ===========  ALL OBJECTS IN CLASS: BUILDINGSURFACE:DETAILED ===========
+
+BuildingSurface:Detailed,
+    Este,                    !- Name
+    Wall,                    !- Surface Type
+    10cmCADa0.3,             !- Construction Name
+    Cubo,                    !- Zone Name
+    S_Cubo,                  !- Space Name
+    Outdoors,                !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    2.5,                     !- Vertex 1 X-coordinate {m}
+    2.5,                     !- Vertex 1 Y-coordinate {m}
+    2.5,                     !- Vertex 1 Z-coordinate {m}
+    2.5,                     !- Vertex 2 X-coordinate {m}
+    0,                       !- Vertex 2 Y-coordinate {m}
+    2.5,                     !- Vertex 2 Z-coordinate {m}
+    2.5,                     !- Vertex 3 X-coordinate {m}
+    0,                       !- Vertex 3 Y-coordinate {m}
+    0,                       !- Vertex 3 Z-coordinate {m}
+    2.5,                     !- Vertex 4 X-coordinate {m}
+    2.5,                     !- Vertex 4 Y-coordinate {m}
+    0;                       !- Vertex 4 Z-coordinate {m}
+
+BuildingSurface:Detailed,
+    Norte,                   !- Name
+    Wall,                    !- Surface Type
+    No_mass,                 !- Construction Name
+    Cubo,                    !- Zone Name
+    S_Cubo,                  !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0,                       !- Vertex 1 X-coordinate {m}
+    2.5,                     !- Vertex 1 Y-coordinate {m}
+    2.5,                     !- Vertex 1 Z-coordinate {m}
+    2.5,                     !- Vertex 2 X-coordinate {m}
+    2.5,                     !- Vertex 2 Y-coordinate {m}
+    2.5,                     !- Vertex 2 Z-coordinate {m}
+    2.5,                     !- Vertex 3 X-coordinate {m}
+    2.5,                     !- Vertex 3 Y-coordinate {m}
+    0,                       !- Vertex 3 Z-coordinate {m}
+    0,                       !- Vertex 4 X-coordinate {m}
+    2.5,                     !- Vertex 4 Y-coordinate {m}
+    0;                       !- Vertex 4 Z-coordinate {m}
+
+BuildingSurface:Detailed,
+    Oeste,                   !- Name
+    Wall,                    !- Surface Type
+    No_mass,                 !- Construction Name
+    Cubo,                    !- Zone Name
+    S_Cubo,                  !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0,                       !- Vertex 1 X-coordinate {m}
+    0,                       !- Vertex 1 Y-coordinate {m}
+    2.5,                     !- Vertex 1 Z-coordinate {m}
+    0,                       !- Vertex 2 X-coordinate {m}
+    2.5,                     !- Vertex 2 Y-coordinate {m}
+    2.5,                     !- Vertex 2 Z-coordinate {m}
+    0,                       !- Vertex 3 X-coordinate {m}
+    2.5,                     !- Vertex 3 Y-coordinate {m}
+    0,                       !- Vertex 3 Z-coordinate {m}
+    0,                       !- Vertex 4 X-coordinate {m}
+    0,                       !- Vertex 4 Y-coordinate {m}
+    0;                       !- Vertex 4 Z-coordinate {m}
+
+BuildingSurface:Detailed,
+    Piso,                    !- Name
+    Floor,                   !- Surface Type
+    No_mass,                 !- Construction Name
+    Cubo,                    !- Zone Name
+    S_Cubo,                  !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    NoSun,                   !- Sun Exposure
+    NoWind,                  !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    0,                       !- Vertex 1 X-coordinate {m}
+    0,                       !- Vertex 1 Y-coordinate {m}
+    0,                       !- Vertex 1 Z-coordinate {m}
+    0,                       !- Vertex 2 X-coordinate {m}
+    2.5,                     !- Vertex 2 Y-coordinate {m}
+    0,                       !- Vertex 2 Z-coordinate {m}
+    2.5,                     !- Vertex 3 X-coordinate {m}
+    2.5,                     !- Vertex 3 Y-coordinate {m}
+    0,                       !- Vertex 3 Z-coordinate {m}
+    2.5,                     !- Vertex 4 X-coordinate {m}
+    0,                       !- Vertex 4 Y-coordinate {m}
+    0;                       !- Vertex 4 Z-coordinate {m}
+
+BuildingSurface:Detailed,
+    Sur,                     !- Name
+    Wall,                    !- Surface Type
+    No_mass,                 !- Construction Name
+    Cubo,                    !- Zone Name
+    S_Cubo,                  !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    2.5,                     !- Vertex 1 X-coordinate {m}
+    0,                       !- Vertex 1 Y-coordinate {m}
+    2.5,                     !- Vertex 1 Z-coordinate {m}
+    0,                       !- Vertex 2 X-coordinate {m}
+    0,                       !- Vertex 2 Y-coordinate {m}
+    2.5,                     !- Vertex 2 Z-coordinate {m}
+    0,                       !- Vertex 3 X-coordinate {m}
+    0,                       !- Vertex 3 Y-coordinate {m}
+    0,                       !- Vertex 3 Z-coordinate {m}
+    2.5,                     !- Vertex 4 X-coordinate {m}
+    0,                       !- Vertex 4 Y-coordinate {m}
+    0;                       !- Vertex 4 Z-coordinate {m}
+
+BuildingSurface:Detailed,
+    Techo,                   !- Name
+    Roof,                    !- Surface Type
+    No_mass,                 !- Construction Name
+    Cubo,                    !- Zone Name
+    S_Cubo,                  !- Space Name
+    Adiabatic,               !- Outside Boundary Condition
+    ,                        !- Outside Boundary Condition Object
+    SunExposed,              !- Sun Exposure
+    WindExposed,             !- Wind Exposure
+    ,                        !- View Factor to Ground
+    ,                        !- Number of Vertices
+    2.5,                     !- Vertex 1 X-coordinate {m}
+    0,                       !- Vertex 1 Y-coordinate {m}
+    2.5,                     !- Vertex 1 Z-coordinate {m}
+    2.5,                     !- Vertex 2 X-coordinate {m}
+    2.5,                     !- Vertex 2 Y-coordinate {m}
+    2.5,                     !- Vertex 2 Z-coordinate {m}
+    0,                       !- Vertex 3 X-coordinate {m}
+    2.5,                     !- Vertex 3 Y-coordinate {m}
+    2.5,                     !- Vertex 3 Z-coordinate {m}
+    0,                       !- Vertex 4 X-coordinate {m}
+    0,                       !- Vertex 4 Y-coordinate {m}
+    2.5;                     !- Vertex 4 Z-coordinate {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SURFACEPROPERTY:CONVECTIONCOEFFICIENTS ===========
+
+SurfaceProperty:ConvectionCoefficients,
+    Este,                    !- Surface Name
+    Inside,                  !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    8.1,                     !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+SurfaceProperty:ConvectionCoefficients,
+    Este,                    !- Surface Name
+    Outside,                 !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    13,                      !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+SurfaceProperty:ConvectionCoefficients,
+    Norte,                   !- Surface Name
+    Inside,                  !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    0.1,                     !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+SurfaceProperty:ConvectionCoefficients,
+    Oeste,                   !- Surface Name
+    Inside,                  !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    0.1,                     !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+SurfaceProperty:ConvectionCoefficients,
+    Piso,                    !- Surface Name
+    Inside,                  !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    0.1,                     !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+SurfaceProperty:ConvectionCoefficients,
+    Sur,                     !- Surface Name
+    Inside,                  !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    0.1,                     !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+SurfaceProperty:ConvectionCoefficients,
+    Techo,                   !- Surface Name
+    Inside,                  !- Convection Coefficient 1 Location
+    Value,                   !- Convection Coefficient 1 Type
+    0.1,                     !- Convection Coefficient 1 {W/m2-K}
+    ,                        !- Convection Coefficient 1 Schedule Name
+    ,                        !- Convection Coefficient 1 User Curve Name
+    ,                        !- Convection Coefficient 2 Location
+    ,                        !- Convection Coefficient 2 Type
+    0.1;                     !- Convection Coefficient 2 {W/m2-K}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SIZING:PARAMETERS ===========
+
+Sizing:Parameters,
+    1.25,                    !- Heating Sizing Factor
+    1.15;                    !- Cooling Sizing Factor
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTDOORAIR:NODE ===========
+
+OutdoorAir:Node,
+    Model Outdoor Air Node;  !- Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLEDICTIONARY ===========
+
+Output:VariableDictionary,
+    IDF,                     !- Key Field
+    Unsorted;                !- Sort Option
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:TABLE:SUMMARYREPORTS ===========
+
+Output:Table:SummaryReports,
+    AllSummary;              !- Report 1 Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUTCONTROL:TABLE:STYLE ===========
+
+OutputControl:Table:Style,
+    HTML;                    !- Column Separator
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLE ===========
+
+Output:Variable,
+    *,                       !- Key Value
+    Zone Mean Air Temperature,  !- Variable Name
+    Timestep;                !- Reporting Frequency
+
+Output:Variable,
+    *,                       !- Key Value
+    Site Outdoor Air Drybulb Temperature,  !- Variable Name
+    Timestep;                !- Reporting Frequency
+
+
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:SQLITE ===========
+
+Output:SQLite,
+    SimpleAndTabular;        !- Option Type
+

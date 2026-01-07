@@ -1,0 +1,17 @@
+[project]
+name = "eh-validation-eplus"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "enerhabitat",
+    "iertools",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.8",
+    "notebook>=7.5.1",
+]
+
+[tool.uv.sources]
+enerhabitat = { path = "../EnerHabitatPOO/dist/enerhabitat-0.0.1-py3-none-any.whl" }
+iertools = { git = "https://github.com/altamarmx/iertools.git" }

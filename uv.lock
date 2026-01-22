@@ -375,7 +375,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "enerhabitat", path = "../EnerHabitatPOO/dist/enerhabitat-0.0.1-py3-none-any.whl" },
+    { name = "enerhabitat" },
     { name = "iertools", git = "https://github.com/altamarmx/iertools.git" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "matplotlib", specifier = ">=3.10.8" },
@@ -384,20 +384,15 @@ requires-dist = [
 
 [[package]]
 name = "enerhabitat"
-version = "0.0.1"
-source = { path = "../EnerHabitatPOO/dist/enerhabitat-0.0.1-py3-none-any.whl" }
+version = "0.1.7"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numba" },
     { name = "pvlib" },
 ]
+sdist = { url = "https://files.pythonhosted.org/packages/ed/f8/7d436a01d08ebbf0886ed8fa354b9bce4aa528e7471a59f173c7ee9e182b/enerhabitat-0.1.7.tar.gz", hash = "sha256:0cb4e94a77e53a4fb6e0ac8ba15a322f96808d033fdcd510b1453ad23cbb445a", size = 59366, upload-time = "2026-01-08T23:39:18.923Z" }
 wheels = [
-    { filename = "enerhabitat-0.0.1-py3-none-any.whl", hash = "sha256:c1462b9b2aaaac0f7215d6fc84b189f88e5181aa2bdbf5aea6a01e3c98a1163e" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "numba", specifier = ">=0.62.1" },
-    { name = "pvlib", specifier = ">=0.13.1" },
+    { url = "https://files.pythonhosted.org/packages/ca/62/0bc5d5829266fd6ffe3c0fa6925106a93431e60ddd5007d9b143037a9e88/enerhabitat-0.1.7-py3-none-any.whl", hash = "sha256:26768ea69aefa645fe52fd5107a0f684964737ba2e29fd01589eafe912b21972", size = 16306, upload-time = "2026-01-08T23:39:17.624Z" },
 ]
 
 [[package]]
@@ -536,7 +531,7 @@ wheels = [
 [[package]]
 name = "iertools"
 version = "0.8.4"
-source = { git = "https://github.com/altamarmx/iertools.git#1c02f4f231bb96feb4e165c1e93eeee4c3d5ea97" }
+source = { git = "https://github.com/altamarmx/iertools.git#2d1382998998a47e22483ef1b0682918b8df0301" }
 dependencies = [
     { name = "numpy" },
     { name = "pandas" },

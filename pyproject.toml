@@ -13,5 +13,4 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-enerhabitat = { path = "../EnerHabitatPOO/dist/enerhabitat-0.0.1-py3-none-any.whl" }
 iertools = { git = "https://github.com/altamarmx/iertools.git" }

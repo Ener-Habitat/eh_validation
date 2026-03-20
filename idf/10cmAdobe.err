@@ -1,4 +1,4 @@
-Program Version,EnergyPlus, Version 25.1.0-68a4a7c774, YMD=2025.11.04 12:54,
+Program Version,EnergyPlus, Version 25.1.0-1c11a3d85f, YMD=2026.03.19 23:30,
    ** Warning ** RunPeriod: object=RUN PERIOD 1, start weekday (MONDAY) does not match the start year (2025), corrected to THURSDAY.
    ** Warning ** BuildingSurface:Detailed="NORTE", Sun Exposure="SUNEXPOSED".
    **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.

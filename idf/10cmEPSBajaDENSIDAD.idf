@@ -218,7 +218,7 @@ Material:NoMass,
 
 Construction,
     10cmCADa0.3,             !- Name
-    10cmEPS;                 !- Outside Layer
+    10cmEPSBajaDensidad;     !- Outside Layer
 
 Construction,
     No_mass,                 !- Name

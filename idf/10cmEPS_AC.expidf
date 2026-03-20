@@ -115,6 +115,70 @@ ScheduleTypeLimits,
     Discrete,                !- Numeric Type
     availability;            !- Unit Type
 
+ScheduleTypeLimits,
+    Cubo Thermostat Schedule Type Limits,  !- Name
+    0,                       !- Lower Limit Value
+    4,                       !- Upper Limit Value
+    DISCRETE;                !- Numeric Type
+
+ScheduleTypeLimits,
+    Temperature,             !- Name
+    ,                        !- Lower Limit Value
+    ,                        !- Upper Limit Value
+    Continuous,              !- Numeric Type
+    temperature;             !- Unit Type
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:DAY:INTERVAL ===========
+
+Schedule:Day:Interval,
+    Schedule Day 3,          !- Name
+    Temperature,             !- Schedule Type Limits Name
+    No,                      !- Interpolate to Timestep
+    24:00,                   !- Time 1 {hh:mm}
+    28;                      !- Value Until Time 1
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:WEEK:DAILY ===========
+
+Schedule:Week:Daily,
+    AC_Tn Week Rule - Jan1-Dec31,  !- Name
+    Schedule Day 3,          !- Sunday Schedule:Day Name
+    Schedule Day 3,          !- Monday Schedule:Day Name
+    Schedule Day 3,          !- Tuesday Schedule:Day Name
+    Schedule Day 3,          !- Wednesday Schedule:Day Name
+    Schedule Day 3,          !- Thursday Schedule:Day Name
+    Schedule Day 3,          !- Friday Schedule:Day Name
+    Schedule Day 3,          !- Saturday Schedule:Day Name
+    Schedule Day 3,          !- Holiday Schedule:Day Name
+    Schedule Day 3,          !- SummerDesignDay Schedule:Day Name
+    Schedule Day 3,          !- WinterDesignDay Schedule:Day Name
+    Schedule Day 3,          !- CustomDay1 Schedule:Day Name
+    Schedule Day 3;          !- CustomDay2 Schedule:Day Name
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:YEAR ===========
+
+Schedule:Year,
+    AC_Tn,                   !- Name
+    Temperature,             !- Schedule Type Limits Name
+    AC_Tn Week Rule - Jan1-Dec31,  !- Schedule:Week Name 1
+    1,                       !- Start Month 1
+    1,                       !- Start Day 1
+    12,                      !- End Month 1
+    31;                      !- End Day 1
+
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:COMPACT ===========
+
+Schedule:Compact,
+    Cubo Thermostat Schedule,!- Name
+    Cubo Thermostat Schedule Type Limits,  !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00,            !- Field 3
+    4;                       !- Field 4
+
 
 !-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:CONSTANT ===========
 
@@ -186,17 +250,6 @@ Material,
     0.1,                     !- Thickness {m}
     0.035,                   !- Conductivity {W/m-K}
     25,                      !- Density {kg/m3}
-    1400,                    !- Specific Heat {J/kg-K}
-    0.0001,                  !- Thermal Absorptance
-    0.3,                     !- Solar Absorptance
-    0.3;                     !- Visible Absorptance
-
-Material,
-    10cmEPSBajaDensidad,     !- Name
-    MediumSmooth,            !- Roughness
-    0.1,                     !- Thickness {m}
-    0.046,                   !- Conductivity {W/m-K}
-    10,                      !- Density {kg/m3}
     1400,                    !- Specific Heat {J/kg-K}
     0.0001,                  !- Thermal Absorptance
     0.3,                     !- Solar Absorptance
@@ -495,6 +548,37 @@ SurfaceProperty:ConvectionCoefficients,
     ,                        !- Convection Coefficient 2 Location
     ,                        !- Convection Coefficient 2 Type
     0.1;                     !- Convection Coefficient 2 {W/m2-K}
+! 
+! 
+!-   ===========  ALL OBJECTS IN CLASS: HVACTEMPLATE:ZONE:IDEALLOADSAIRSYSTEM ===========
+! 
+! HVACTemplate:Zone:IdealLoadsAirSystem,
+!     Cubo,                    !- Zone Name
+!     ,                        !- Template Thermostat Name
+!     ,                        !- System Availability Schedule Name
+!     ,                        !- Maximum Heating Supply Air Temperature {C}
+!     ,                        !- Minimum Cooling Supply Air Temperature {C}
+!     ,                        !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+!     ,                        !- Heating Limit
+!     ,                        !- Maximum Heating Air Flow Rate {m3/s}
+!     ,                        !- Maximum Sensible Heating Capacity {W}
+!     ,                        !- Cooling Limit
+!     ,                        !- Maximum Cooling Air Flow Rate {m3/s}
+!     ,                        !- Maximum Total Cooling Capacity {W}
+!     ,                        !- Heating Availability Schedule Name
+!     ,                        !- Cooling Availability Schedule Name
+!     ,                        !- Dehumidification Control Type
+!     ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+!     ,                        !- Dehumidification Setpoint {percent}
+!     ,                        !- Humidification Control Type
+!     ,                        !- Humidification Setpoint {percent}
+!     ,                        !- Outdoor Air Method
+!     ,                        !- Outdoor Air Flow Rate per Person {m3/s}
+!     ,                        !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
+!     ,                        !- Outdoor Air Flow Rate per Zone {m3/s}
+!     ,                        !- Design Specification Outdoor Air Object Name
+!     ;                        !- Demand Controlled Ventilation Type
 
 
 !-   ===========  ALL OBJECTS IN CLASS: SIZING:PARAMETERS ===========
@@ -502,6 +586,31 @@ SurfaceProperty:ConvectionCoefficients,
 Sizing:Parameters,
     1.25,                    !- Heating Sizing Factor
     1.15;                    !- Cooling Sizing Factor
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONECONTROL:THERMOSTAT ===========
+
+ZoneControl:Thermostat,
+    Cubo Thermostat,         !- Name
+    Cubo,                    !- Zone or ZoneList Name
+    Cubo Thermostat Schedule,!- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Thermostat Setpoint Dual Setpoint 1,  !- Control 1 Name
+    ,                        !- Control 2 Object Type
+    ,                        !- Control 2 Name
+    ,                        !- Control 3 Object Type
+    ,                        !- Control 3 Name
+    ,                        !- Control 4 Object Type
+    ,                        !- Control 4 Name
+    0;                       !- Temperature Difference Between Cutout And Setpoint {deltaC}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: THERMOSTATSETPOINT:DUALSETPOINT ===========
+
+ThermostatSetpoint:DualSetpoint,
+    Thermostat Setpoint Dual Setpoint 1,  !- Name
+    AC_Tn,                   !- Heating Setpoint Temperature Schedule Name
+    AC_Tn;                   !- Cooling Setpoint Temperature Schedule Name
 
 
 !-   ===========  ALL OBJECTS IN CLASS: OUTDOORAIR:NODE ===========
@@ -546,4 +655,55 @@ Output:Variable,
 
 Output:SQLite,
     SimpleAndTabular;        !- Option Type
+! 
+! -------------------------------------------------------------
+! New objects created from ExpandObjects
+! -------------------------------------------------------------
+! 
 
+ZoneHVAC:EquipmentConnections,
+  Cubo,                                                    !- Zone Name
+  Cubo Equipment,                                          !- Zone Conditioning Equipment List Name
+  Cubo Ideal Loads Supply Inlet,                           !- Zone Air Inlet Node or NodeList Name
+  ,                                                        !- Zone Air Exhaust Node or NodeList Name
+  Cubo Zone Air Node,                                      !- Zone Air Node Name
+  Cubo Return Outlet;                                      !- Zone Return Air Node Name
+
+ZoneHVAC:EquipmentList,
+  Cubo Equipment,                                          !- Name
+  SequentialLoad,                                          !- Load Distribution Scheme
+  ZoneHVAC:IdealLoadsAirSystem,                            !- Zone Equipment Object Type
+  Cubo Ideal Loads Air System,                             !- Zone Equipment Name
+  1,                                                       !- Zone Equipment Cooling Sequence
+  1,                                                       !- Zone Equipment Heating or No-Load Sequence
+  ,                                                        !- Zone Equipment Sequential Cooling Fraction Schedule Name
+  ;                                                        !- Zone Equipment Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:IdealLoadsAirSystem,
+  Cubo Ideal Loads Air System,                             !- Name
+  ,                                                        !- Availability Schedule Name
+  Cubo Ideal Loads Supply Inlet,                           !- Zone Supply Air Node Name
+  ,                                                        !- Zone Exhaust Air Node Name
+  ,                                                        !- System Inlet Air Node Name
+  50,                                                      !- Maximum Heating Supply Air Temperature [C]
+  13,                                                      !- Minimum Cooling Supply Air Temperature [C]
+  0.0156,                                                  !- Maximum Heating Supply Air Humidity Ratio [kg-H20/kg-air]
+  0.0077,                                                  !- Minimum Cooling Supply Air Humidity Ratio [kg-H20/kg-air]
+  NoLimit,                                                 !- Heating Limit
+  ,                                                        !- Maximum Heating Air Flow Rate {m3/s}
+  ,                                                        !- Maximum Sensible Heating Capacity {m3/s}
+  NoLimit,                                                 !- Cooling Limit
+  ,                                                        !- Maximum Cooling Air Flow Rate {m3/s}
+  ,                                                        !- Maximum Total Cooling Capacity {m3/s}
+  ,                                                        !- Heating Availability Schedule Name
+  ,                                                        !- Cooling Availability Schedule Name
+  ConstantSensibleHeatRatio,                               !- Dehumidification Control Type
+  0.7,                                                     !- Cooling Sensible Heat Ratio
+  None,                                                    !- Humidification Control Type
+  ,                                                        !- Design Specification Outdoor Air Object Name
+  ,                                                        !- Outdoor Air Inlet Node Name
+  None,                                                    !- Demand Controlled Ventilation Type
+  NoEconomizer,                                            !- Outdoor Air Economizer Type
+  None,                                                    !- Heat Recovery Type
+  0.7,                                                     !- Sensible Heat Recovery Effectiveness
+  0.65;                                                    !- Latent Heat Recovery Effectiveness

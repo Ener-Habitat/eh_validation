@@ -1,3 +1,21 @@
+# EnergyPlus outputs files
+**/*.audit
+**/*.bnd
+**/*.dxf
+**/*.eio
+**/*.end
+**/*.EPDerr
+**/*.eso
+**/*.mdd
+**/*.mtd
+**/*.rdd
+**/*.rvaudit
+**/*.shd
+idf/**/*.svg
+idf/**/*.csv
+idf/**/*.err
+
+
 # Python-generated files
 __pycache__/
 *.py[oc]

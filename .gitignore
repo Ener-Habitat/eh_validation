@@ -11,6 +11,8 @@
 **/*.rdd
 **/*.rvaudit
 **/*.shd
+**/*.expidf
+**/*.html
 idf/**/*.svg
 idf/**/*.csv
 idf/**/*.err

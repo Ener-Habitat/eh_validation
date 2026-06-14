@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "enerhabitat",
+    "enerhabitat>=0.1.10",
     "iertools",
     "jupyter>=1.1.1",
     "matplotlib>=3.10.8",

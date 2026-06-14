@@ -1,4 +1,6 @@
-Program Version,EnergyPlus, Version 25.1.0-68a4a7c774, YMD=2025.11.04 12:55,
+Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.06.14 12:49,
+   ** Warning ** Version: in IDF="25.1" not the same as expected="26.1"
+   ** Warning ** Version: in IDF="25.1" not the same as expected="26.1"
    ** Warning ** RunPeriod: object=RUN PERIOD 1, start weekday (MONDAY) does not match the start year (2025), corrected to THURSDAY.
    ** Warning ** BuildingSurface:Detailed="NORTE", Sun Exposure="SUNEXPOSED".
    **   ~~~   ** ..This surface is not exposed to External Environment.  Sun exposure has no effect.
@@ -39,4 +41,4 @@ Program Version,EnergyPlus, Version 25.1.0-68a4a7c774, YMD=2025.11.04 12:55,
    ************* Use Output:Diagnostics,DisplayUnusedSchedules; to see them.
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
-   ************* EnergyPlus Completed Successfully-- 14 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  0.22sec
+   ************* EnergyPlus Completed Successfully-- 16 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  0.17sec

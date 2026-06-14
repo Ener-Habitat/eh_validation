@@ -274,7 +274,7 @@ BuildingSurface:Detailed,
     S_Cubo,                  !- Space Name
     Outdoors,                !- Outside Boundary Condition
     ,                        !- Outside Boundary Condition Object
-    SunExposed,              !- Sun Exposure
+    NoSun,                   !- Sun Exposure
     WindExposed,             !- Wind Exposure
     ,                        !- View Factor to Ground
     ,                        !- Number of Vertices

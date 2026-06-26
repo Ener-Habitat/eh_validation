@@ -28,3 +28,10 @@ wheels/
 
 # Virtual environments
 .venv
+
+# EPW plano temporal del notebook 003
+notebooks/_flat_driver.epw
+
+# Cache de numba y autosaves de jupyter
+.numba_cache/
+.ipynb_checkpoints/
